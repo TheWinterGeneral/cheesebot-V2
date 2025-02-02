@@ -223,7 +223,7 @@ async function handleEndTracking(interaction) {
     if (minutes > 0 || hours > 0) timeString += `${minutes}m `;
     timeString += `${seconds}s`;
 
-    let coins = Math.floor(finalSeconds / 600) * 10;
+    let coins = Math.floor(finalSeconds / 600) * 25;
 
     let boost = 0;
     member.roles.cache.forEach((role) => {
