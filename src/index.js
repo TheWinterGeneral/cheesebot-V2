@@ -42,12 +42,14 @@ function hasPermission(member) {
 // Delete old commands and register new ones
 const rest = new REST({ version: "10" }).setToken(TOKEN);
 
-async function deleteOldCommands() {
-  try {
-    console.log("Started deleting old commands.");
-    const commands = await rest.get(
-      Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID),
-    );
+rest.delete(Routes.applicationGuildCommand(clientId, guildId, "commandId"))
+	.then(() => console.log('Successfully deleted guild command'))
+	.catch(console.error);
+
+// for global commands
+rest.delete(Routes.applicationCommand(clientId, "commandId"))
+	.then(() => console.log('Successfully deleted application command'))
+	.catch(console.error);
 
     for (const command of commands) {
       await rest.delete(
