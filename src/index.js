@@ -40,29 +40,19 @@ function hasPermission(member) {
 }
 
 // Delete old commands and register new ones
-const rest = new REST({ version: '9' }).setToken(token);
+async function deleteOldCommands() {
+  try {
+    const commands = await client.application.commands.fetch();
 
-// ...
-
-// for guild-based commands
-rest.delete(Routes.applicationGuildCommand(clientId, guildId, "commandId"))
-	.then(() => console.log('Successfully deleted guild command'))
-	.catch(console.error);
-
-// for global commands
-rest.delete(Routes.applicationCommand(clientId, "commandId"))
-	.then(() => console.log('Successfully deleted application command'))
-	.catch(console.error);
-
-    for (const command of commands) {
-      await rest.delete(
-        Routes.applicationGuildCommand(CLIENT_ID, GUILD_ID, command.id),
-      );
+    for (const command of commands.values()) {
+      await client.application.commands.delete(command.id);
     }
-    console.log("Successfully deleted old commands.");
+
+    console.log('Successfully deleted all old slash commands.');
   } catch (error) {
-    console.error("Error deleting commands:", error);
+    console.error('Error deleting old commands:', error);
   }
+}
 }
 
 const ROLE_BOOSTS = new Map([
