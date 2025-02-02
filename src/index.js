@@ -61,8 +61,9 @@ async function deleteOldCommands() {
 }
 
 const ROLE_BOOSTS = new Map([
-  ["1311407279194767421", 5], // Bronze Role - 5% boost
-  ["1311407231933349999", 10], // Silver Role - 10% boost
+  ["1252840855874699285", 25], // PGP
+  ["1137346412418437140", 100], //Gamenight Host
+  ["1137313565481648150", 50],
 ]);
 
 const commands = [
