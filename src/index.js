@@ -53,7 +53,7 @@ async function deleteOldCommands() {
     console.error('Error deleting old commands:', error);
   }
 }
-}
+
 
 const ROLE_BOOSTS = new Map([
   ["1252840855874699285", 25], // PGP
