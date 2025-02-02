@@ -54,7 +54,6 @@ async function deleteOldCommands() {
   }
 }
 
-
 const ROLE_BOOSTS = new Map([
   ["1252840855874699285", 25], // PGP
   ["1137346412418437140", 100], //Gamenight Host
@@ -82,7 +81,12 @@ const commands = [
     ),
 ];
 
-(async () => {
+client.once("ready", async () => {
+  console.log(`Logged in as ${client.user.tag}`);
+  
+  // Define 'rest' object here
+  const rest = new REST({ version: "9" }).setToken(TOKEN);
+
   try {
     await deleteOldCommands();
     console.log("Started refreshing application (/) commands.");
@@ -94,10 +98,6 @@ const commands = [
   } catch (error) {
     console.error(error);
   }
-})();
-
-client.once("ready", () => {
-  console.log(`Logged in as ${client.user.tag}`);
 });
 
 client.on("interactionCreate", async (interaction) => {
