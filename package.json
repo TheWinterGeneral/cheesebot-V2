@@ -1,7 +1,7 @@
 {
     "name": "commandkit-app",
     "version": "0.0.0",
-    "main": "./src/index.js",
+    "main": "./index.js",
     "scripts": {
         "start": "node index.js",
         "dev": "nodemon --ext js,json,ts ./src/index.js"
