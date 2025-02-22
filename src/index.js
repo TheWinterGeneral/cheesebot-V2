@@ -4,6 +4,7 @@ const {
   GatewayIntentBits,
   EmbedBuilder,
   SlashCommandBuilder,
+  Events,
 } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
