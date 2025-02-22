@@ -346,7 +346,22 @@ client.on("voiceStateUpdate", (oldState, newState) => {
     }
   }
 });
-client.once(Events.ClientReady, readyClient => {
-	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
-});
 client.login(TOKEN);
+
+client.once("ready", async () => {
+  console.log(`Logged in as ${client.user.tag}`);
+
+  const rest = new REST({ version: "9" }).setToken(TOKEN);
+
+  try {
+    await deleteOldCommands();
+    console.log("Started refreshing application (/) commands.");
+
+    await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {
+      body: commands,
+    });
+    console.log("Successfully registered new commands.");
+  } catch (error) {
+    console.error(error);
+  }
+});
