@@ -345,5 +345,7 @@ client.on("voiceStateUpdate", (oldState, newState) => {
     }
   }
 });
-
+client.once(Events.ClientReady, readyClient => {
+	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+});
 client.login(TOKEN);
