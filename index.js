@@ -8,8 +8,8 @@ const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
 const keep_alive = require("./keep_alive");
 
-// Ensure you use an environment variable for your token (DO NOT hardcode it)
-const TOKEN = "MTMyNDUzNzI3NzcyNDA5ODU5MA.GyWTDm._4BGJR7nv5Ami1oQIvkT4ZQUGtYjFID3ai6GV8";
+// Put token in
+const TOKEN = "";
 const CLIENT_ID = "1324537277724098590";
 const GUILD_ID = "1135452057676021822";
 const TARGET_CHANNEL_ID = "1175257706966302870";
